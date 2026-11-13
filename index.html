@@ -211,7 +211,7 @@
             <h3>Ovarian tumour segmentation and classification from ultrasound</h3>
             <p>Upload an ovarian ultrasound image and the app outlines the lesion, shows a close-up of it, and predicts which of 8 categories it belongs to (seven tumour types or a normal ovary). It flags the malignant category and low-confidence predictions, and exports a PDF summary.</p>
             <p class="finding"><strong>Result:</strong> lesion outlines closely match expert annotations (Dice 0.85, IoU 0.77), and the classifier reaches 71.9% accuracy across the 8 categories.</p>
-            <p class="tools">Python, PyTorch, segmentation-models-pytorch, Albumentations, Streamlit.</p>
+            <p class="tools">U-Net and ResNet18 in PyTorch, segmentation-models-pytorch, Albumentations, Streamlit. Trained on the MMOTU dataset (1,469 images).</p>
             <div class="links"><a href="https://ovarian-tumor-diagnosis.streamlit.app/" title="Free hosting: the first load can take up to a minute">Live demo</a><a href="https://github.com/Betelhemgetachew/Ovarian-Tumor-Segmentation-and-Classification-from-Ultrasound-Images">Code on GitHub</a></div>
           </div>
         </article>
