@@ -198,9 +198,9 @@
           <figure><img src="assets/img/mamaguard.webp" alt="MamaGuard assessment screen showing a high-risk result, probability breakdown, feature contributions and a suggested action plan" loading="lazy" width="1200" height="750"></figure>
           <div>
             <h3>MamaGuard: maternal risk detection and decision support</h3>
-            <p>A decision-support system for antenatal clinics. Nurses enter a mother's vitals and get a risk level with the reasons behind it, the next visit is booked automatically, and staff can ask questions answered only from Kenya's Ministry of Health obstetric protocols.</p>
+            <p>A decision-support system that helps antenatal clinics identify high-risk pregnancies early. It explains every risk rating, keeps mothers on a follow-up schedule, and answers clinical questions strictly from Kenya's Ministry of Health obstetric protocols.</p>
             <p class="finding"><strong>Design choice:</strong> the protocol assistant refuses when the protocols don't cover a question, and dose amounts are never split across text chunks, so it can't quote half a dose.</p>
-            <p class="tools">Python, FastAPI, XGBoost, SHAP, ChromaDB, Llama 3.3 (RAG), SQLite.</p>
+            <p class="tools">Python, FastAPI, XGBoost, SHAP, ChromaDB, GPT-OSS 120B via Groq (RAG), SQLite.</p>
             <div class="links"><a href="https://mamaguard-7p1h.onrender.com" title="Free hosting: the first load can take up to a minute">Live demo</a><a href="https://github.com/Betelhemgetachew/MamaGuard-Maternal-Risk-Detection-and-Clinical-Decision-Support-System">Code on GitHub</a></div>
           </div>
         </article>
@@ -209,7 +209,7 @@
           <figure><img src="assets/img/ovarian.webp" alt="The ovarian ultrasound app showing a predicted lesion outline and a teratoma prediction at 99.8% confidence" loading="lazy" width="1200" height="753"></figure>
           <div>
             <h3>Ovarian tumour segmentation and classification from ultrasound</h3>
-            <p>Upload an ovarian ultrasound image and the app outlines the lesion, shows a close-up of it, and predicts which of 8 categories it belongs to (seven tumour types or a normal ovary). It flags the malignant category and low-confidence predictions, and exports a PDF summary.</p>
+            <p>An AI tool that detects and identifies ovarian tumours on ultrasound images. It locates the lesion and classifies it as one of seven tumour types or a normal ovary, flagging possible malignancy and uncertain predictions for closer review.</p>
             <p class="finding"><strong>Result:</strong> lesion outlines closely match expert annotations (Dice 0.85, IoU 0.77), and the classifier reaches 71.9% accuracy across the 8 categories.</p>
             <p class="tools">U-Net and ResNet18 in PyTorch, segmentation-models-pytorch, Albumentations, Streamlit. Trained on the MMOTU dataset (1,469 images).</p>
             <div class="links"><a href="https://ovarian-tumor-diagnosis.streamlit.app/" title="Free hosting: the first load can take up to a minute">Live demo</a><a href="https://github.com/Betelhemgetachew/Ovarian-Tumor-Segmentation-and-Classification-from-Ultrasound-Images">Code on GitHub</a></div>
@@ -220,7 +220,7 @@
           <figure><img src="assets/img/sepsis.webp" alt="ROC curve for the paediatric sepsis mortality model" loading="lazy" width="800" height="600"></figure>
           <div>
             <h3>Paediatric sepsis: predicting in-hospital mortality</h3>
-            <p>Compares CatBoost, LightGBM, Random Forest and XGBoost on 2,686 children admitted with suspected sepsis, where 4.4% died. Missing growth measurements are filled from WHO growth standards by age and sex.</p>
+            <p>A model that predicts which children admitted with suspected sepsis are at risk of dying in hospital, so the most vulnerable can be reviewed early. Built on 2,686 admissions, where 4.4% of children died, comparing four machine-learning models.</p>
             <p class="finding"><strong>Result:</strong> with its decision threshold tuned for sensitivity, the Random Forest identifies about 3 in 4 deaths in 5-fold cross-validation (recall 0.74, ROC-AUC 0.83), the right trade-off for a screening tool where missing a death costs more than an extra review.</p>
             <p class="tools">Python, scikit-learn, CatBoost, LightGBM, XGBoost, imbalanced-learn, SciPy.</p>
             <div class="links"><a href="https://github.com/Betelhemgetachew/Model-Comparison-for-Paediatric-Sepsis-Mortality-Prediction">Code on GitHub</a></div>
@@ -233,7 +233,7 @@
           <figure><img src="assets/img/stock.webp" alt="Grid of 20 companies' normalised closing prices showing training data, test data and ARIMA forecasts" loading="lazy" width="1200" height="686"></figure>
           <div>
             <h3>Stock market prediction: time series vs neural networks</h3>
-            <p>Compares ARIMA time-series forecasting with a feed-forward neural network (40 hidden nodes, Adam optimiser) for predicting the daily closing prices of 20 global companies, from Apple and Microsoft to Samsung and East Africa Metals, over July 2014 – June 2024.</p>
+            <p>Forecasts the daily closing prices of 20 global companies, from Apple and Microsoft to Samsung and East Africa Metals, and tests whether a neural network predicts them better than a classical time-series model (ARIMA), using ten years of prices from July 2014 to June 2024.</p>
             <p class="finding"><strong>Covered:</strong> collecting ten years of data from Yahoo Finance, cleaning and normalising it, training both models, and comparing them on test data and a separate July 2024 validation set.</p>
             <p class="tools">MATLAB. Group project for MTH 1060 (Analytical Computational Foundation).</p>
             <div class="links"><a href="https://github.com/Betelhemgetachew/Stock-Price-Forecasting-ARIMA-vs-Neural-Network">Code on GitHub</a></div>
@@ -244,9 +244,9 @@
           <figure><img src="assets/img/flights.webp" alt="Power BI executive page showing 29K flights, delay rate by airline, delay categories and the daily delay trend" loading="lazy" width="1200" height="671"></figure>
           <div>
             <h3>US flight operations: Power BI dashboard</h3>
-            <p>A three-page report on 30,000 US domestic flights from Q1 2024: what happened, why, and where. Built on a star schema with a date table and 15 DAX measures.</p>
+            <p>An interactive report that shows how 30,000 US domestic flights performed in Q1 2024: how punctual each airline was, what caused delays and cancellations, and which airports were most affected.</p>
             <p class="finding"><strong>Result:</strong> late-arriving aircraft cause 39% of attributed delay minutes, and Delta runs at a similar scale to American Airlines with far fewer late arrivals (29% against 43%).</p>
-            <p class="tools">Power BI, Power Query, DAX, data modelling.</p>
+            <p class="tools">Power BI, Power Query, DAX (15 measures), star-schema data model.</p>
             <div class="links"><a href="https://github.com/Betelhemgetachew/DSA3050-PowerBI-Betelhem_Kebede-670549">Report and screenshots on GitHub</a></div>
           </div>
         </article>
@@ -255,9 +255,9 @@
           <figure><img src="assets/img/pipeline.webp" alt="Architecture diagram: CLI and desktop app, Python security layer, PostgreSQL, pgAdmin and Grafana in Docker" loading="lazy" width="1200" height="828"></figure>
           <div>
             <h3>Secure data pipeline</h3>
-            <p>Moves 100,000 customer records into PostgreSQL with password login, role-based access, field-level encryption, SHA-256 tamper checks and audit logs, monitored in Grafana. Tested against simulated attacks.</p>
+            <p>A secure system for storing and handling 100,000 customer records. Only authorised users get in, each role sees only what it needs, sensitive fields are encrypted, tampering is detected, and every action is logged and monitored. Tested against simulated attacks.</p>
             <p class="finding"><strong>Built:</strong> the whole system, from the Docker setup and database schema to the desktop app and the security tests.</p>
-            <p class="tools">Python, PostgreSQL, Docker, bcrypt, Fernet encryption, Grafana, CustomTkinter.</p>
+            <p class="tools">Python, PostgreSQL, Docker, bcrypt, Fernet encryption, SHA-256, Grafana, CustomTkinter.</p>
             <div class="links"><a href="https://github.com/Betelhemgetachew/End-to-End-Secure-Big-Data-Pipeline">Code on GitHub</a></div>
           </div>
         </article>
@@ -266,7 +266,7 @@
         <ul class="more">
           <li>
             <h4>University timetable scheduler</h4>
-            <p>Places 65 course sections into labs, times and lecturers with no room or lecturer clashes, using constraint satisfaction and backtracking. Streamlit app.</p>
+            <p>Builds a clash-free university timetable, fitting 65 course sections into labs, time slots and lecturers. Uses constraint satisfaction with backtracking, in a Streamlit app.</p>
             <a href="https://github.com/Betelhemgetachew/Constraint-Based-University-Timetable-Scheduling">Code on GitHub</a>
           </li>
           <li>
