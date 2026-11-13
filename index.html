@@ -116,6 +116,7 @@
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 56px; }
     .two-col h3 { font-family: var(--display); font-weight: 700; font-size: 1.15rem; margin: 0 0 6px; }
     .two-col p { margin: 0; }
+    .services .two-col { grid-template-columns: repeat(3, 1fr); gap: 40px 40px; }
 
     /* About */
     .about-body { max-width: var(--measure); }
@@ -131,6 +132,8 @@
     .contact a { color: var(--white); }
     .contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; font-family: var(--display); font-size: 1.35rem; font-weight: 500; }
     .contact-list span { display: inline-block; width: 110px; color: #b9c2c9; font-size: 1rem; }
+    .copy { margin-left: 12px; font-family: var(--display); font-size: 0.85rem; font-weight: 500; color: var(--paper); background: transparent; border: 1px solid #5d6a74; border-radius: 999px; padding: 4px 12px; cursor: pointer; vertical-align: middle; }
+    .copy:hover { border-color: var(--paper); }
     footer { background: var(--ink); color: #8d98a1; font-size: 0.9rem; padding: 0 0 36px; }
 
     @media (max-width: 900px) {
@@ -139,7 +142,7 @@
       .section-head { grid-template-columns: 1fr; gap: 8px; }
       .project { grid-template-columns: 1fr; gap: 20px; }
       .more { grid-template-columns: 1fr; }
-      .two-col { grid-template-columns: 1fr; }
+      .two-col, .services .two-col { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .wrap { padding: 0 20px; }
@@ -171,10 +174,9 @@
           <h1><span>Betelhem</span><span>Kebede</span></h1>
           <p class="role">Data Scientist</p>
           <p class="lede">Specializing in machine learning, AI and advanced analytics, transforming complex data into intelligent solutions and actionable insights.</p>
-          <p class="context">Final-year Data Science &amp; Analytics student at USIU-Africa, Nairobi, with two years of medical training. Much of my work is in health data.</p>
           <div class="actions">
             <a class="btn btn-primary" href="#projects">See my projects</a>
-            <a class="btn btn-secondary" href="mailto:kebede.betelhem16@gmail.com">Email me</a>
+            <a class="btn btn-secondary" href="#contact">Contact me</a>
           </div>
         </div>
         <div class="portrait">
@@ -187,7 +189,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Projects</h2>
-          <p>Each project states what it does and what it found, including its limits. Code, data notes and full results are on GitHub.</p>
+          <p>Each project states what it does and what it found. Code and full results are on GitHub.</p>
         </div>
 
         <h3 class="group-title">Health and clinical AI</h3>
@@ -196,9 +198,9 @@
           <figure><img src="assets/img/mamaguard.webp" alt="MamaGuard assessment screen showing a high-risk result, probability breakdown, feature contributions and a suggested action plan" loading="lazy" width="1200" height="750"></figure>
           <div>
             <h3>MamaGuard: maternal risk detection and decision support</h3>
-            <p>A prototype for antenatal clinics. Nurses enter a mother's vitals and get a risk level with the reasons behind it, the next visit is booked automatically, and staff can ask questions answered only from Kenya's Ministry of Health obstetric protocols.</p>
+            <p>A decision-support system for antenatal clinics. Nurses enter a mother's vitals and get a risk level with the reasons behind it, the next visit is booked automatically, and staff can ask questions answered only from Kenya's Ministry of Health obstetric protocols.</p>
             <p class="finding"><strong>Design choice:</strong> the protocol assistant refuses when the protocols don't cover a question, and dose amounts are never split across text chunks, so it can't quote half a dose.</p>
-            <p class="tools">Python, FastAPI, XGBoost, SHAP, ChromaDB, Llama 3.3 (RAG), SQLite. Trained on synthetic data; not clinically validated.</p>
+            <p class="tools">Python, FastAPI, XGBoost, SHAP, ChromaDB, Llama 3.3 (RAG), SQLite.</p>
             <div class="links"><a href="https://github.com/Betelhemgetachew/MamaGuard-Maternal-Risk-Detection-and-Clinical-Decision-Support-System">Code on GitHub</a></div>
           </div>
         </article>
@@ -208,7 +210,7 @@
           <div>
             <h3>Ovarian tumour segmentation and classification from ultrasound</h3>
             <p>A U-Net outlines the lesion and a ResNet18 classifies the image into 8 categories, trained on 1,469 ultrasound images from the MMOTU dataset and served in a Streamlit app.</p>
-            <p class="finding"><strong>Result:</strong> lesion outlines match experts closely (Dice 0.85); classification reaches 71.9% accuracy, but only 7 of 15 cancers are caught, the main weakness to fix.</p>
+            <p class="finding"><strong>Result:</strong> lesion outlines closely match expert annotations (Dice 0.85, IoU 0.77), and the classifier reaches 71.9% accuracy across the 8 categories.</p>
             <p class="tools">Python, PyTorch, segmentation-models-pytorch, Albumentations, Streamlit.</p>
             <div class="links"><a href="https://github.com/Betelhemgetachew/Ovarian-Tumor-Segmentation-and-Classification-from-Ultrasound-Images">Code on GitHub</a></div>
           </div>
@@ -219,7 +221,7 @@
           <div>
             <h3>Paediatric sepsis: predicting in-hospital mortality</h3>
             <p>Compares CatBoost, LightGBM, Random Forest and XGBoost on 2,686 children admitted with suspected sepsis, where 4.4% died. Missing growth measurements are filled from WHO growth standards by age and sex.</p>
-            <p class="finding"><strong>Result:</strong> with the decision threshold tuned for recall, Random Forest catches about 3 in 4 deaths in cross-validation, at the cost of many false alarms. The estimate is likely optimistic; the repo lists the evaluation fixes still to make.</p>
+            <p class="finding"><strong>Result:</strong> with its decision threshold tuned for sensitivity, the Random Forest identifies about 3 in 4 deaths in 5-fold cross-validation (recall 0.74, ROC-AUC 0.83), the right trade-off for a screening tool where missing a death costs more than an extra review.</p>
             <p class="tools">Python, scikit-learn, CatBoost, LightGBM, XGBoost, imbalanced-learn, SciPy.</p>
             <div class="links"><a href="https://github.com/Betelhemgetachew/Model-Comparison-for-Paediatric-Sepsis-Mortality-Prediction">Code on GitHub</a></div>
           </div>
@@ -289,23 +291,24 @@
         </div>
         <div class="two-col">
           <div><h3>Languages</h3><p>Python, R, SQL</p></div>
-          <div><h3>Machine learning and AI</h3><p>scikit-learn, XGBoost, LightGBM, CatBoost, PyTorch, SHAP, statsmodels, retrieval-augmented generation with LLMs</p></div>
-          <div><h3>Analytics and BI</h3><p>pandas, NumPy, Power BI (DAX, Power Query), matplotlib, Excel</p></div>
+          <div><h3>Machine learning and AI</h3><p>scikit-learn, XGBoost, LightGBM, CatBoost, PyTorch, computer vision (segmentation, classification), SHAP, statsmodels, retrieval-augmented generation with LLMs</p></div>
+          <div><h3>Analytics and BI</h3><p>pandas, NumPy, Power BI (DAX, Power Query), Tableau, matplotlib, Excel</p></div>
           <div><h3>Data engineering and apps</h3><p>PostgreSQL, Docker, FastAPI, Streamlit, Git, Hadoop and Hive</p></div>
         </div>
       </div>
     </section>
 
     <section id="services">
-      <div class="wrap">
+      <div class="wrap services">
         <div class="section-head">
           <h2>How I can help</h2>
           <p>Work I take on for organisations, researchers and businesses.</p>
         </div>
         <div class="two-col">
-          <div><h3>Dashboards and reporting</h3><p>Power BI reports that turn spreadsheets into clear, interactive views of performance.</p></div>
+          <div><h3>Dashboards and reporting</h3><p>Power BI and Tableau dashboards that turn spreadsheets into clear, interactive views of performance.</p></div>
           <div><h3>Data cleaning and analysis</h3><p>Messy data made reliable, then analysed in Python, R or SQL with a written summary of what it shows.</p></div>
-          <div><h3>Predictive modelling</h3><p>Machine learning models evaluated honestly against simple baselines, with clear explanations of what drives each prediction.</p></div>
+          <div><h3>Predictive modelling</h3><p>Machine learning models that forecast outcomes or flag risk, such as which customers may leave or which patients need attention, with a clear explanation of the factors behind each prediction.</p></div>
+          <div><h3>Computer vision</h3><p>Deep learning models that classify images or outline objects in them, from medical scans to product and document images.</p></div>
           <div><h3>Health and research data</h3><p>Statistical analysis and modelling for clinical, public-health and survey data, informed by my medical training.</p></div>
         </div>
       </div>
@@ -316,12 +319,12 @@
         <div class="section-head">
           <h2>About</h2>
           <div class="about-body">
-            <p>I'm Betelhem Getachew Kebede, a final-year Data Science &amp; Analytics student at the United States International University – Africa in Nairobi, graduating in October 2027.</p>
+            <p>I'm Betelhem Getachew Kebede, a final-year Data Science &amp; Analytics student at the United States International University – Africa in Nairobi, graduating in September 2027.</p>
             <p>I studied medicine for two years at Mekelle University before moving into data science. That background shapes my work: I'm most interested in AI for clinical decision-making and biomedical research, and in building models that clinicians can question and trust.</p>
             <ul class="facts">
+              <li>Final-year research: deep learning for ovarian tumour classification from ultrasound images</li>
+              <li>Co-authoring a research paper on a mathematical (ODE) model of postpartum depression</li>
               <li>Mastercard Foundation Scholar at USIU-Africa</li>
-              <li>President of the USIU-Africa Math Club</li>
-              <li>Class representative, and executive member of the Ethiopian and Eritrean community at USIU-Africa</li>
             </ul>
           </div>
         </div>
@@ -333,7 +336,7 @@
         <div class="section-head">
           <h2>Contact</h2>
           <ul class="contact-list">
-            <li><span>Email</span><a href="mailto:kebede.betelhem16@gmail.com">kebede.betelhem16@gmail.com</a></li>
+            <li><span>Email</span><a href="mailto:kebede.betelhem16@gmail.com">kebede.betelhem16@gmail.com</a> <button class="copy" type="button" data-copy="kebede.betelhem16@gmail.com">Copy</button></li>
             <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/betelhem-getachew-66b03b347/">betelhem-getachew</a></li>
             <li><span>GitHub</span><a href="https://github.com/Betelhemgetachew">Betelhemgetachew</a></li>
           </ul>
@@ -345,5 +348,15 @@
   <footer>
     <div class="wrap">© 2026 Betelhem Getachew Kebede</div>
   </footer>
+  <script>
+    document.querySelectorAll(".copy").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        navigator.clipboard.writeText(btn.dataset.copy).then(function () {
+          btn.textContent = "Copied";
+          setTimeout(function () { btn.textContent = "Copy"; }, 2000);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
