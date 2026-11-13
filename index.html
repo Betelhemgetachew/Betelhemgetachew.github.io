@@ -230,12 +230,12 @@
         <h3 class="group-title">Forecasting, business intelligence and data engineering</h3>
 
         <article class="project">
-          <figure><img src="assets/img/stock.webp" alt="Microsoft closing price with naive, ARIMA and neural network one-day-ahead forecasts over the last 60 test days" loading="lazy" width="1200" height="476"></figure>
+          <figure><img src="assets/img/stock.webp" alt="Grid of 20 companies' normalised closing prices showing training data, test data and ARIMA forecasts" loading="lazy" width="1200" height="686"></figure>
           <div>
-            <h3>Stock price forecasting: ARIMA vs neural network</h3>
-            <p>One-day-ahead forecasts for 20 companies over 10 years of daily prices, compared against simply repeating yesterday's close.</p>
-            <p class="finding"><strong>Result:</strong> neither model beats the naive forecast (1.51% error, against 1.54% for ARIMA and 1.59% for the neural network). The original group version looked far more accurate because its inputs included the price it was predicting.</p>
-            <p class="tools">Python, statsmodels, scikit-learn, pandas. Originally a MATLAB group project, re-implemented by me.</p>
+            <h3>Stock market prediction: time series vs neural networks</h3>
+            <p>Compares ARIMA time-series forecasting with a feed-forward neural network (40 hidden nodes, Adam optimiser) for predicting the daily closing prices of 20 global companies, from Apple and Microsoft to Samsung and East Africa Metals, over July 2014 – June 2024.</p>
+            <p class="finding"><strong>Covered:</strong> collecting ten years of data from Yahoo Finance, cleaning and normalising it, training both models, and comparing them on test data and a separate July 2024 validation set.</p>
+            <p class="tools">MATLAB. Group project for MTH 1060 (Analytical Computational Foundation).</p>
             <div class="links"><a href="https://github.com/Betelhemgetachew/Stock-Price-Forecasting-ARIMA-vs-Neural-Network">Code on GitHub</a></div>
           </div>
         </article>
@@ -290,8 +290,8 @@
           <p>Tools I have used in the projects above.</p>
         </div>
         <div class="two-col">
-          <div><h3>Languages</h3><p>Python, R, SQL</p></div>
-          <div><h3>Machine learning and AI</h3><p>scikit-learn, XGBoost, LightGBM, CatBoost, PyTorch, computer vision (segmentation, classification), SHAP, statsmodels, retrieval-augmented generation with LLMs</p></div>
+          <div><h3>Languages</h3><p>Python, R, SQL, MATLAB</p></div>
+          <div><h3>Machine learning and AI</h3><p>scikit-learn, XGBoost, LightGBM, CatBoost, PyTorch, computer vision (segmentation, classification), SHAP, retrieval-augmented generation with LLMs</p></div>
           <div><h3>Analytics and BI</h3><p>pandas, NumPy, Power BI (DAX, Power Query), Tableau, matplotlib, Excel</p></div>
           <div><h3>Data engineering and apps</h3><p>PostgreSQL, Docker, FastAPI, Streamlit, Git, Hadoop and Hive</p></div>
         </div>
